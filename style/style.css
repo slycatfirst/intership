@@ -1,8 +1,47 @@
+@font-face {
+    font-family: FS Ellitom Pro;
+    src: url(fonts/FSElliotPro.ttx) format(ttx);
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-variant: normal;
+}
+
+@font-face {
+    font-family: FS Ellitom Pro;
+    src: url(fonts/FSElliotPro-Bold.ttx) format(ttx);
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    font-variant: normal;
+}
+
+@font-face {
+    font-family: Faber Sans Pro;
+    src: url(fonts/FaberSansPro-Normal.ttx) format(ttx);
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-variant: normal;
+}
+
+@font-face {
+    font-family: Lisboa Heavy;
+    src: url(fonts/LisboaHeavy.ttx) format(ttx);
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    font-variant: normal;
+}
+
 body {
     background-color: #fff;
     color: #2b2b2b;
     margin: 0;
     font-family: 'FS Elliot Pro';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 header {
@@ -23,14 +62,24 @@ nav {
     height: 70px;
     width: 100%;
     margin: 0;
-    justify-content: flex-start;
+    justify-content: space-between;
     border-bottom: 1px solid #EDEDED;
     z-index: 1;
 }
 
-.logo {
-    margin-right: 71px;
-    margin-left: 122px;
+.nav-left,
+.nav-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    padding-left: 122px;
+}
+
+.nav-right {
+    justify-content: flex-start;
 }
 
 .btn-nav {
@@ -40,7 +89,8 @@ nav {
     list-style: none;
     font-style: normal;
     font-weight: 700;
-    margin-right: 131px;
+    font-size: 14px;
+    line-height: 18px;
     padding-left: 0;
     width: 473px;
     height: 18px;
@@ -58,37 +108,39 @@ nav {
 
 .contain-share {
     width: 72px;
+    height: 70px;
     display: flex;
-}
-.share {
     align-items: center;
     justify-content: center;
-}
 
+    border-left: 1px solid #EDEDED;
+    border-right: 1px solid #EDEDED;
+}
 
 .contain-search {
-    
-    width: 419px;
+    width: 400px;
+    height: 70px;
     display: flex;
+    align-items: center;
+    padding-left: 28px;
+    border-right: 1px solid #EDEDED;
 }
 
-
 .contain-search input {
-    width: 250px;
+    width: 100px;
     height: 19px;
-    align-items: center;
     margin-left: 15px;
     border: none;
     position: relative;
-}
 
-.contain-search input::placeholder {
     font-family: 'Faber Sans Pro';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
+}
 
+.contain-search input::placeholder {
     color: #B5B5B5;
 
 }
@@ -118,18 +170,21 @@ header section {
     justify-content: center;
     width: 515px;
     margin-left: 122px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 30px;
 }
 
 .agregator h1 {
-    font-family: "Lisboa Heavy";
+    font-family: 'Lisboa Heavy';
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 47px;
 }
 
-.head-image {
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-}
+
 
 main {
     display: flex;
