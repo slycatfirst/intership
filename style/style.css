@@ -1,0 +1,180 @@
+body {
+    background-color: #fff;
+    color: #2b2b2b;
+    margin: 0;
+    font-family: 'FS Elliot Pro';
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 503px;
+    position: relative;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    margin: 0;
+    justify-content: flex-start;
+    border-bottom: 1px solid #EDEDED;
+    z-index: 1;
+}
+
+.logo {
+    margin-right: 71px;
+    margin-left: 122px;
+}
+
+.btn-nav {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    list-style: none;
+    font-style: normal;
+    font-weight: 700;
+    margin-right: 131px;
+    padding-left: 0;
+    width: 473px;
+    height: 18px;
+}
+
+.btn-nav li a {
+    color: #2B2B2B;
+    text-decoration: none;
+}
+
+.btn-nav li a:focus {
+    color: #00D254;
+    outline: none;
+}
+
+.contain-share {
+    width: 72px;
+    display: flex;
+}
+.share {
+    align-items: center;
+    justify-content: center;
+}
+
+
+.contain-search {
+    
+    width: 419px;
+    display: flex;
+}
+
+
+.contain-search input {
+    width: 250px;
+    height: 19px;
+    align-items: center;
+    margin-left: 15px;
+    border: none;
+    position: relative;
+}
+
+.contain-search input::placeholder {
+    font-family: 'Faber Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #B5B5B5;
+
+}
+
+.contain-search input:focus {
+    outline:none;
+    border-bottom: 1px solid #979797;
+}
+
+header section {
+    background-color: #F8F8F8;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    bottom: 0;
+    height: 469;
+    width: 100%;
+    overflow: hidden;
+}
+
+.agregator {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 515px;
+    margin-left: 122px;
+}
+
+.agregator h1 {
+    font-family: "Lisboa Heavy";
+}
+
+.head-image {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.our-adv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 408px;
+    padding: 0 122px;
+}
+
+.our-adv h2 {
+    font-family: "Lisboa Heavy";
+}
+
+.our-adv-block {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.our-adv-block svg {
+    margin-right: 25px;
+}
+
+.big-change, 
+.actual-info,
+.speed-search {
+    width: 337px;
+    height: 175p;
+    display: flex;
+    flex-direction: column;
+}
+
+.big-change-title, 
+.actual-info-title,
+.speed-search-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
