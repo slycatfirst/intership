@@ -1,6 +1,7 @@
+/*Постарался добавить шрифты из папки fonts*/
 @font-face {
     font-family: FS Ellitom Pro;
-    src: url(fonts/FSElliotPro.ttx) format(ttx);
+    src: url(../fonts/FSElliotPro.ttf);
     font-weight: 400;
     font-style: normal;
     font-stretch: normal;
@@ -9,7 +10,7 @@
 
 @font-face {
     font-family: FS Ellitom Pro;
-    src: url(fonts/FSElliotPro-Bold.ttx) format(ttx);
+    src: url(../fonts/FSElliotPro-Bold.ttf);
     font-weight: 700;
     font-style: normal;
     font-stretch: normal;
@@ -18,7 +19,7 @@
 
 @font-face {
     font-family: Faber Sans Pro;
-    src: url(fonts/FaberSansPro-Normal.ttx) format(ttx);
+    src: url(../fonts/FaberSansPro-Normal.ttf);
     font-weight: 400;
     font-style: normal;
     font-stretch: normal;
@@ -27,7 +28,7 @@
 
 @font-face {
     font-family: Lisboa Heavy;
-    src: url(fonts/LisboaHeavy.ttx) format(ttx);
+    src: url(../fonts/LisboaHeavy.ttf);
     font-weight: 700;
     font-style: normal;
     font-stretch: normal;
@@ -38,35 +39,47 @@ body {
     background-color: #fff;
     color: #2b2b2b;
     margin: 0;
+
     font-family: 'FS Elliot Pro';
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 400;
+
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+/*
+---------Шапка-----------
+*/
 
 header {
+    /* Разместил все блоки в шапке друг под другом по центру */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+
+    /* Задал ширину блоку в 84% и высоту 503 пикселей (взял значение из фигмы) */
+    width: 84%;
     height: 503px;
-    position: relative;
-    margin: 0;
 }
 
 nav {
+    /* Разместил в панели навигации все в строку и по центру */
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
+    justify-content: center;
+
+    /* Задал высоту, как в фигме, и растянул на всю ширину header */
     height: 70px;
     width: 100%;
-    margin: 0;
-    justify-content: space-between;
-    border-bottom: 1px solid #EDEDED;
     z-index: 1;
+    position: relative;
 }
 
+/* Задал значения для левого и правого блока */
 .nav-left,
 .nav-right {
     display: flex;
@@ -75,37 +88,56 @@ nav {
     align-items: center;
     height: 100%;
     width: 50%;
-    padding-left: 122px;
 }
 
 .nav-right {
-    justify-content: flex-start;
+    justify-content: center;
 }
 
+/* Задал отступ справа для левой панели,
+   чтобы при уменьшении ширины правые и левые блоки не слипались */
+.nav-left {
+    margin-right: 15px;
+}
+
+/* Кнопки перехода на другие страницы */
 .btn-nav {
+    /* Растянул их на всю ширину */
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+
+    /* Убрал метки у списка и задал
+       Задал значения шрифту (стиль и размер из body возьмет) */
     list-style: none;
     font-style: normal;
     font-weight: 700;
-    font-size: 14px;
     line-height: 18px;
-    padding-left: 0;
+
+    /* задал ширину блоку (скорее всего надо будет это поправить и задать какое-то значение в процентах)
+       и высоту, как в фигме */
     width: 473px;
     height: 18px;
+
+    /* указал отступ слева, чтобы при уменьшении размера окна не слипался с Лого*/
+    margin-left: 15px;
 }
 
+/* Поставил цвет кнопкам и убрал подчеркивание */
 .btn-nav li a {
     color: #2B2B2B;
     text-decoration: none;
 }
 
+/* Пока поставил меняться цвет на зеленый таким образом
+   Но, как понял, там надо будет через jquery делать*/
 .btn-nav li a:focus {
     color: #00D254;
     outline: none;
 }
 
+/* Задал значения для непонятной кнопки
+   Размеры указаны, как в фигме, также расположил кнопку поцентру, чтоб отходила от границ*/
 .contain-share {
     width: 72px;
     height: 70px;
@@ -113,26 +145,30 @@ nav {
     align-items: center;
     justify-content: center;
 
+    /* Поставил слева и справа рамку, как в фигме*/
     border-left: 1px solid #EDEDED;
     border-right: 1px solid #EDEDED;
 }
 
+/*Блок для поиска. Указал размеры (как в фигме) и расположил все там по центру по высоте*/
 .contain-search {
     width: 400px;
     height: 70px;
     display: flex;
     align-items: center;
-    padding-left: 28px;
     border-right: 1px solid #EDEDED;
 }
 
+/*Добавил ширину для поиска (возможно надо больше, так как не понятно по фигме)
+  Высота, как в фигме
+   Добавил отстп от лупы */
 .contain-search input {
     width: 100px;
     height: 19px;
     margin-left: 15px;
     border: none;
-    position: relative;
 
+    /* Параметры текста, который мы там печатаем*/
     font-family: 'Faber Sans Pro';
     font-style: normal;
     font-weight: 400;
@@ -140,43 +176,60 @@ nav {
     line-height: 19px;
 }
 
+/* Добавил параметры для текста, который добавляется в строке поиска изначально*/
 .contain-search input::placeholder {
     color: #B5B5B5;
-
+    font-family: 'Faber Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
 }
-
+/*убрал рамку, которая появляется при фокусировке, в строке поиска*/
 .contain-search input:focus {
     outline:none;
     border-bottom: 1px solid #979797;
 }
 
+/* Скеция с заголовком и картинкой*/
 header section {
     background-color: #F8F8F8;
+
+    /* Разместил текст и картинку в строку и по разным краям*/
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
-    bottom: 0;
-    height: 469;
-    width: 100%;
+
+    /* Задал высоту, как в фигме
+       Растянул по ширине на все окно
+       Непоместившиеся объекты спрятал */
+    height: 469px;
+    width: 100vw;
     overflow: hidden;
 }
 
+/* Текстовый блок
+   Задал высоту на всю секцию, чтобы разместить по середине текст */
 .agregator {
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    width: 515px;
-    margin-left: 122px;
 
-    font-style: normal;
-    font-weight: 400;
+    /* Ширина, как в фигме, наверное, лучше задать в %
+       Сделал отступ слева, так как растянул весь блок на всю ширину */
+    width: 515px;
+    margin-left: 8%;
+
+    /* Добавил параметры для текста
+       Остальные должны из body подтянуться */
     font-size: 18px;
     line-height: 30px;
 }
 
+/* Задал параметры для заголовка в текстовом блоке шапки*/
 .agregator h1 {
     font-family: 'Lisboa Heavy';
     font-weight: 900;
@@ -184,47 +237,66 @@ header section {
     line-height: 47px;
 }
 
-
-
+/* Основные блоки с информацией разместил друг под другом и по центру по горизонтали */
 main {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    align-items: center;
+    width: 84%; /* Ширина блока. Так как в шапке такая же, может быть можно в body поместить*/
 }
 
+/* Расположение информации в первом блоке */
 .our-adv {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+
+    /* Высоту задал, как в фигме
+       Растянул на весь main*/
     height: 408px;
-    padding: 0 122px;
+    width: 100%;
 }
 
+/* Задал параметры для заголовка блока*/
 .our-adv h2 {
     font-family: "Lisboa Heavy";
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 39px;
 }
 
+/* Как будут распологаться колонки с текстом */
 .our-adv-block {
-    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    width: 100%;
 }
 
+/* Отступ заголовка колонки от иконки */
 .our-adv-block svg {
     margin-right: 25px;
 }
 
+/* Высота и ширина колонок задана из фигмы
+   Задал параметры, как расположить заголовок и текст под ним */
 .big-change, 
 .actual-info,
 .speed-search {
     width: 337px;
-    height: 175p;
+    height: 175px;
     display: flex;
     flex-direction: column;
+
+    /* Задал отличающиеся параметры для шрифта */
+    font-weight: 400;
+    line-height: 24px;
 }
 
+/* Указал как будет распологаться иконка и зоголовок в колонках
+   Добавил параметры для шрифта */
 .big-change-title, 
 .actual-info-title,
 .speed-search-title {
@@ -232,4 +304,8 @@ main {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
 }
