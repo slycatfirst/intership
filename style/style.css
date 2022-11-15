@@ -1,3 +1,5 @@
+
+
 /*Постарался добавить шрифты из папки fonts*/
 @font-face {
     font-family: FS Ellitom Pro;
@@ -46,8 +48,12 @@ body {
     font-weight: 400;
 
     display: flex;
+    justify-content: center;
+
+    display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 /*
 ---------Шапка-----------
@@ -61,7 +67,7 @@ header {
     justify-content: center;
 
     /* Задал ширину блоку в 84% и высоту 503 пикселей (взял значение из фигмы) */
-    width: 84%;
+    width: 100%;
     height: 503px;
 }
 
@@ -70,13 +76,12 @@ nav {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
     /* Задал высоту, как в фигме, и растянул на всю ширину header */
+    width: 84%;
     height: 70px;
-    width: 100%;
     z-index: 1;
-    position: relative;
 }
 
 /* Задал значения для левого и правого блока */
@@ -87,7 +92,6 @@ nav {
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    width: 50%;
 }
 
 .nav-right {
@@ -194,6 +198,9 @@ nav {
 /* Скеция с заголовком и картинкой*/
 header section {
     background-color: #F8F8F8;
+    background-image: url(../img/image.png);
+    background-repeat: no-repeat;
+    background-position: right;
 
     /* Разместил текст и картинку в строку и по разным краям*/
     display: flex;
@@ -242,7 +249,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 84%; /* Ширина блока. Так как в шапке такая же, может быть можно в body поместить*/
+    
+    width: 84%;
 }
 
 /* Расположение информации в первом блоке */
@@ -269,7 +277,7 @@ main {
 /* Как будут распологаться колонки с текстом */
 .our-adv-block {
     display: flex;
-    flex-direction: row;
+    flex-flow: row nowrap;
     justify-content: space-between;
 
     width: 100%;
@@ -308,4 +316,25 @@ main {
     font-weight: 700;
     font-size: 20px;
     line-height: 27px;
+}
+
+@media (max-width: 1440px) {
+    header, main {
+        max-width: 1200px;
+    }
+}
+
+@media (max-width: 1200x) {
+    header, main {
+        max-width: 998px;
+    }
+}
+
+@media (max-width: 998px) {
+    header, main {
+        max-width: 768x;
+    }
+    .speed-search {
+        align-self: flex-end;
+    }
 }
