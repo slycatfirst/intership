@@ -1,3 +1,8 @@
+* {
+    box-sizing: border-box;
+}
+
+
 /* TODO глобальная проблема элементы не проименнованые по бэм, потому что у нас теперь есть глобальные
     классы которые будут тянуть свои стили на другие страницы которые мы можем создать */
 
@@ -9,7 +14,7 @@
 /*Постарался добавить шрифты из папки fonts*/
 @font-face {
     font-family: FS Ellitom Pro;
-    src: url(../fonts/FSElliotPro.ttf);
+    src: url(../fonts/FSElliotPro.woff);
     font-weight: 400;
     font-style: normal;
     font-stretch: normal;
@@ -18,7 +23,7 @@
 
 @font-face {
     font-family: FS Ellitom Pro;
-    src: url(../fonts/FSElliotPro-Bold.ttf);
+    src: url(../fonts/FSElliotPro-Bold.woff);
     font-weight: 700;
     font-style: normal;
     font-stretch: normal;
@@ -27,7 +32,7 @@
 
 @font-face {
     font-family: Faber Sans Pro;
-    src: url(../fonts/FaberSansPro-Normal.ttf);
+    src: url(../fonts/FaberSansPro-Normal.woff);
     font-weight: 400;
     font-style: normal;
     font-stretch: normal;
@@ -36,7 +41,7 @@
 
 @font-face {
     font-family: Lisboa Heavy;
-    src: url(../fonts/LisboaHeavy.ttf);
+    src: url(../fonts/LisboaHeavy.woff);
     font-weight: 700;
     font-style: normal;
     font-stretch: normal;
@@ -48,118 +53,112 @@ body {
     color: #2b2b2b;
     margin: 0;
     /* TODO не указаны альтернативный шрифты, если не сможет загрузится этот  */
-    font-family: 'FS Elliot Pro';
+    font-family: 'FS Elliot Pro', 'Georgia', 'Arial', sans-serif;
     font-style: normal;
     font-size: 14px;
     font-weight: 400;
-
-    /* TODO не хорошая идея навешивать display: flex на body */
-    display: flex;
-    justify-content: center;
-    /* TODO дублирование стилей display: flex  */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+    line-height: 36px;
 }
+
 /*
 ---------Шапка-----------
 */
 
-header {
-    /* Разместил все блоки в шапке друг под другом по центру */
+
+.container_width {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.container_padding {
+    padding: 0 122px;
+}
+/*
+.header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
 
-    /* Задал ширину блоку в 84% и высоту 503 пикселей (взял значение из фигмы) */
-    width: 100%;
-    /* TODO давай смоделируем ситуацию что у нас сайт разместили в интернете и он подключен к админке,
+     TODO давай смоделируем ситуацию что у нас сайт разместили в интернете и он подключен к админке,
          то есть текст для этого блока наполняется из админки,
-          что случится, когда я вставлю больше текста чем на макете?  */
-    height: 503px;
+          что случится, когда я вставлю больше текста чем на макете?  
+           --Убрал высоту, теперь должен подстраиваться под содержимое
+           ---Весь блок закоментил, так как он пока не нужен
 }
+*/
 
 nav {
-    /* Разместил в панели навигации все в строку и по центру */
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
 
-    /* Задал высоту, как в фигме, и растянул на всю ширину header */
-    width: 84%;
+    width: 100%;
     /* TODO давай смоделируем ситуацию что случится когда имя пункта навигации будет большим
-         или состоять из 2-х слов и при уменьшении экрана надпись пункта нужно будет перенести в 2 строки  */
-    height: 70px;
+         или состоять из 2-х слов и при уменьшении экрана надпись пункта нужно будет перенести в 2 строки  
+         --Растянул на всю высоту header*/
+    height: 100%;
     z-index: 1;
 }
 
-/* Задал значения для левого и правого блока */
-.nav-left,
-.nav-right {
+
+/* Добавил блоки вместо nav-right/left
+    Ниже добавил модификаторы right и left */
+.nav__block {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height: 100%;
 }
-
-.nav-right {
+.nav__block_right {
     justify-content: center;
 }
-
 /* Задал отступ справа для левой панели,
    чтобы при уменьшении ширины правые и левые блоки не слипались */
-.nav-left {
+.nav__block_left {
     margin-right: 15px;
 }
 
-/* Кнопки перехода на другие страницы */
-.btn-nav {
-    /* Растянул их на всю ширину */
+.nav__btn-block {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-between;
-
-    /* Убрал метки у списка и задал
-       Задал значения шрифту (стиль и размер из body возьмет) */
     list-style: none;
     font-style: normal;
     font-weight: 700;
     line-height: 18px;
-
     /* TODO давай смоделируем ситуацию что у нас сайт разместили в интернете и он подключен к админке,
          то есть текст для этого блока наполняется из админки,
           что случится, когда я вставлю больше элементов навигации чем на макете?  */
-    /* задал ширину блоку (скорее всего надо будет это поправить и задать какое-то значение в процентах)
-       и высоту, как в фигме */
-    width: 473px;
+    /* --Будет растягиваться максимально в ширину, насколько это возможно
+        ---Если что, то перенесет на следующую строку */
+    min-width: 473px;
     /* TODO давай смоделируем ситуацию что случится когда имя пункта навигации будет большим
-         или состоять из 2-х слов и при уменьшении экрана надпись пункта нужно будет перенести в 2 строки  */
-    height: 18px;
+         или состоять из 2-х слов и при уменьшении экрана надпись пункта нужно будет перенести в 2 строки 
+         --Удалил высоту, должен растягиваться по контенту. Но из-за flex-wrap растягивался и с фиксированным значением */
 
     /* указал отступ слева, чтобы при уменьшении размера окна не слипался с Лого*/
     margin-left: 15px;
 }
-
+.nav__btn-block li:nth-last-child(n+2) {
+    margin-right: 5px;
+}
 /* Поставил цвет кнопкам и убрал подчеркивание */
-.btn-nav li a {
+.nav__btn-block li a {
     color: #2B2B2B;
     text-decoration: none;
 }
-
 /* Пока поставил меняться цвет на зеленый таким образом
    Но, как понял, там надо будет через jquery делать*/
-.btn-nav li a:focus {
+.nav__btn-block li a:focus {
     color: #00D254;
     outline: none;
 }
 
 /* Задал значения для непонятной кнопки
    Размеры указаны, как в фигме, также расположил кнопку поцентру, чтоб отходила от границ*/
-.contain-share {
+.nav__compare-btn {
     width: 72px;
     height: 70px;
     display: flex;
@@ -172,7 +171,7 @@ nav {
 }
 
 /*Блок для поиска. Указал размеры (как в фигме) и расположил все там по центру по высоте*/
-.contain-search {
+.nav__search-btn {
     width: 400px;
     height: 70px;
     display: flex;
@@ -183,7 +182,7 @@ nav {
 /*Добавил ширину для поиска (возможно надо больше, так как не понятно по фигме)
   Высота, как в фигме
    Добавил отстп от лупы */
-.contain-search input {
+.nav__search-input {
     width: 100px;
     height: 19px;
     margin-left: 15px;
@@ -191,7 +190,7 @@ nav {
 
     /* TODO такая же проблема что и у body */
     /* Параметры текста, который мы там печатаем*/
-    font-family: 'Faber Sans Pro';
+    font-family: 'Faber Sans Pro', inherit;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -199,28 +198,35 @@ nav {
 }
 
 /* Добавил параметры для текста, который добавляется в строке поиска изначально*/
-.contain-search input::placeholder {
+.nav__search-input::placeholder {
     color: #B5B5B5;
     /* TODO такая же проблема что и у body */
-    font-family: 'Faber Sans Pro';
+    font-family: 'Faber Sans Pro', inherit;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
 }
 /*убрал рамку, которая появляется при фокусировке, в строке поиска*/
-.contain-search input:focus {
+.nav__search-input:focus {
     outline:none;
     border-bottom: 1px solid #979797;
 }
 
+/* Основные блоки с информацией разместил друг под другом и по центру по горизонтали */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* TODO правильно ли будут высчитываться размеры при resize? */
+    margin: 0 auto;
+}
+
 /* Скеция с заголовком и картинкой*/
-header section {
+.section-first {
     background-color: #F8F8F8;
-    /* TODO в данном случае background-image не поможет */
-    background-image: url(../img/image.png);
-    background-repeat: no-repeat;
-    background-position: right;
+    /* TODO в данном случае background-image не поможет 
+        -- Перенес картинку в тег img*/ 
 
     /* Разместил текст и картинку в строку и по разным краям*/
     display: flex;
@@ -234,14 +240,18 @@ header section {
     /* Задал высоту, как в фигме
        Растянул по ширине на все окно
        Непоместившиеся объекты спрятал */
-    height: 469px;
-    width: 100vw;
+    width: 100%;
     overflow: hidden;
+}
+
+.section-first__img {
+    max-width: 745px;
+    max-height: 505px;
 }
 
 /* Текстовый блок
    Задал высоту на всю секцию, чтобы разместить по середине текст */
-.agregator {
+.section-first__text-block {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -252,7 +262,6 @@ header section {
        Сделал отступ слева, так как растянул весь блок на всю ширину */
     width: 515px;
     /* TODO если нам нужны margin как на макете, то проценты при resized не подойдут */
-    margin-left: 8%;
 
     /* Добавил параметры для текста
        Остальные должны из body подтянуться */
@@ -261,25 +270,16 @@ header section {
 }
 
 /* Задал параметры для заголовка в текстовом блоке шапки*/
-.agregator h1 {
+.section-first__text-block_h1 {
     /* TODO такая же проблема что и у body */
-    font-family: 'Lisboa Heavy';
+    font-family: 'Lisboa Heavy', inherit;
     font-weight: 900;
     font-size: 36px;
     line-height: 47px;
 }
 
-/* Основные блоки с информацией разместил друг под другом и по центру по горизонтали */
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* TODO правильно ли будут высчитываться размеры при resize? */
-    width: 84%;
-}
-
 /* Расположение информации в первом блоке */
-.our-adv {
+.section-second {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -287,21 +287,20 @@ main {
 
     /* Высоту задал, как в фигме
        Растянул на весь main*/
-    height: 408px;
     width: 100%;
 }
 
 /* Задал параметры для заголовка блока*/
-.our-adv h2 {
+.section-title {
     /* TODO такая же проблема что и у body */
-    font-family: "Lisboa Heavy";
+    font-family: "Lisboa Heavy", inherit;
     font-weight: 900;
     font-size: 30px;
     line-height: 39px;
 }
 
 /* Как будут распологаться колонки с текстом */
-.our-adv-block {
+.section-second__block {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -310,7 +309,7 @@ main {
 }
 
 /* Отступ заголовка колонки от иконки */
-.our-adv-block svg {
+.section-second__block_svg {
     margin-right: 25px;
 }
 
@@ -318,11 +317,8 @@ main {
 /* TODO а что если я захочу добавить еще пунктов через админку? */
 /* Высота и ширина колонок задана из фигмы
    Задал параметры, как расположить заголовок и текст под ним */
-.big-change,
-.actual-info,
-.speed-search {
-    width: 337px;
-    height: 175px;
+.section-second__block_text {
+    max-width: 33%;
     display: flex;
     flex-direction: column;
 
@@ -333,9 +329,7 @@ main {
 
 /* Указал как будет распологаться иконка и зоголовок в колонках
    Добавил параметры для шрифта */
-.big-change-title,
-.actual-info-title,
-.speed-search-title {
+.section-second__block_title {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -346,25 +340,424 @@ main {
     line-height: 27px;
 }
 
+.section-trhid {
+    width: 100%;
+    min-height: 575px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.change-curse {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.curse-name__list {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.change-curse__menu {
+    color: #2B2B2B;
+    text-decoration: none;
+    list-style: none;
+    text-decoration: none;
+    line-height: 48px;
+}
+
+.change-curse__menu li a:focus {
+    font-weight: 700;
+    outline: none;   
+}
+
+.curse-name__list_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    list-style: none;
+
+}
+
+.change-curse li {
+    color: #2B2B2B;
+    text-decoration: none;
+}
+
+.section-fourth {
+    width: 100%;
+    min-height: 330px;
+    padding: 0 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.school-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    list-style: none;
+}
+
+.popular-curse {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.popular-curse__menu {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    font-weight: 700;
+    width: 100%;
+}
+
+.popular-curse__menu-item_href {
+    min-width: 99px;
+    min-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    color: #2B2B2B;
+    cursor: pointer;
+}
+.popular-curse__menu-item_href:focus {
+    color: #fff;
+    background-color: #01E45C;
+    border-radius: 30px;
+}
+
+.popular-curse__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.popular-curse__curse {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 10px;
+    line-height: 24px;
+    width: 100%;
+}
+.popular-curse__curse * {
+    margin: 0;
+    list-style: none;
+    font-weight: 700;
+}
+
+.popular-curse__title {
+    font-family: 'Lisboa Pro', inherit;
+    font-size: 16px;
+}
+
+.popular-curse__curse-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 18px;
+    line-height: 27px;
+}
+.popular-curse__school-rate_star {
+    margin-right: 10px;
+}
+.popular-curse__school-review {
+    color: #B5B5B5;
+    font-size: 12px;
+}
+
+.popular-curse__school-rate{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.popular-curse__price-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 18px;
+    line-height: 27px;
+}
+.popular-curse__price {
+    font-size: 12px;
+    color: #B5B5B5;
+    text-decoration: line-through;
+}
+.popular-curse__credit {
+    color: #00C213;
+    font-size: 12px;
+}
+
+.popular-curse__time {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 12px;
+    line-height: 14px;
+}
+.popular-curse__clock {
+    margin-right: 15px; 
+}
+
+.popular-curse__param-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.popular-curse__param-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 12px;
+}
+.popular-curse__param-item_text {
+    margin-left: 20px;
+}
+
+.popular-curse__button-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.popular-curse__button_content {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 134px;
+    min-height: 36px;
+    margin-bottom: 5px;
+    border-radius: 30px;
+}
+.popular-curse__button_content-site {
+    background-color: #00C213;
+    color: #FFFFFF;
+}
+.popular-curse__button_content-more {
+    border: 2px solid #2B2B2B;
+    color: #2B2B2B;
+}
+
+.popular-curse__button-add {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 10px;
+    color: #8C8C8C;
+}
+.popular-curse__button_last {
+    margin-left: 10px;
+}
+
+.popular-curse__more-curse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 180px;
+    min-height: 50px;
+    border: 1px solid #8C8C8C;
+    border-radius: 30px;
+    color: #8C8C8C;
+    text-decoration: none;
+}
+
+.section-blog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-blog__blog-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.section-blog__blog_text {
+    position: relative;
+    width: 55%;
+    background-color: #2B2B2B;
+    color: #ffffff;
+    border-radius: 30px;
+    top: 26px;
+    left: 26px;
+}
+
+.section-blog__blog {
+    width: 384px;
+    margin-right: 25px;
+}
+
+.section-blog__blog_image {
+    min-height: 207px;
+    background-color: #F2F2F2;
+}
+
+.section-blog__blog_title {
+    font-family: 'Lisboa Pro';
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.section-blog__blog_under {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.section-blog__blog_date {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #8C8C8C;
+}
+.section-blog__blog_more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 115px;
+    min-height: 33px;
+    border: 1px solid #D7D7D7;
+    border-radius: 30px;
+
+    font-size: 10px;
+    line-height: 13px;
+    color: #B5B5B5;
+    text-decoration: none;
+    
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    background-color: #000000;
+
+    font-size: 12px;
+    line-height: 16px;
+    color: #B5B5B5;
+}
+
+.footer__menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    margin: 55px 0;
+}
+.footer__menu-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.footer__menu-block_title {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+.footer__menu-block_item {
+    color: #B5B5B5;
+    text-decoration: none;
+    margin-bottom: 14px;
+}
+
+.footer__under-block {
+    display: flex;
+    justify-content: space-between;
+
+    border-top: 1px solid #B5B5B5;
+
+    width: 100%;
+}
+
+.footer__under-block_left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.footer__under-block_logo {
+    margin-right: 55px;
+}
+
+.footer__under-block_right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.footer__under-block_icon-block {
+    display: flex;
+    flex-direction: row;   
+    margin-right: 55px;    
+}
+.footer__under-block_icon:nth-last-child(n+2) {
+    margin-right: 16px;
+}
+
 @media (max-width: 1440px) {
-    header, main {
-        max-width: 1200px;
+    .container_width {
+        min-width: 1024px;
     }
 }
 
 /* TODO опечатки в media запросах, поэтому они и не работают */
-@media (max-width: 1200x) {
-    header, main {
-        max-width: 998px;
+@media (max-width: 1023px) {
+    .container_width {
+        min-width: 768px;
     }
+    .container_padding {
+        padding: 0 25px;
+    }
+
 }
 
-@media (max-width: 998px) {
-    header, main {
+@media (max-width: 767px) {
+    .container_width {
         /* TODO опечатки в стилях, поэтому они и не работают */
-        max-width: 768x;
+        min-width: 320px;
     }
-    .speed-search {
-        align-self: flex-end;
+    .container_padding {
+        padding: 0 5px;
     }
 }
