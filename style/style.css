@@ -58,34 +58,29 @@ body {
     font-size: 14px;
     font-weight: 400;
     line-height: 36px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
-
-/*
----------Шапка-----------
-*/
-
 
 .container_width {
     max-width: 1440px;
-    margin: 0 auto;
 }
 .container_padding {
     padding: 0 122px;
 }
-/*
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
 
-     TODO давай смоделируем ситуацию что у нас сайт разместили в интернете и он подключен к админке,
+.header {
+    width: 100%;
+     /*TODO давай смоделируем ситуацию что у нас сайт разместили в интернете и он подключен к админке,
          то есть текст для этого блока наполняется из админки,
           что случится, когда я вставлю больше текста чем на макете?  
            --Убрал высоту, теперь должен подстраиваться под содержимое
-           ---Весь блок закоментил, так как он пока не нужен
+           ---Весь блок закоментил, так как он пока не нужен*/
 }
-*/
+
 
 nav {
     display: flex;
@@ -177,13 +172,14 @@ nav {
     display: flex;
     align-items: center;
     border-right: 1px solid #EDEDED;
+    padding-left: 20px;
 }
 
 /*Добавил ширину для поиска (возможно надо больше, так как не понятно по фигме)
   Высота, как в фигме
    Добавил отстп от лупы */
 .nav__search-input {
-    width: 100px;
+    min-width: 100px;
     height: 19px;
     margin-left: 15px;
     border: none;
@@ -217,9 +213,8 @@ nav {
 main {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    /* TODO правильно ли будут высчитываться размеры при resize? */
     margin: 0 auto;
+    /* TODO правильно ли будут высчитываться размеры при resize? */
 }
 
 /* Скеция с заголовком и картинкой*/
@@ -242,6 +237,7 @@ main {
        Непоместившиеся объекты спрятал */
     width: 100%;
     overflow: hidden;
+    padding-right: 0;
 }
 
 .section-first__img {
@@ -321,7 +317,7 @@ main {
     max-width: 33%;
     display: flex;
     flex-direction: column;
-
+    color: #7E7E7E;
     /* Задал отличающиеся параметры для шрифта */
     font-weight: 400;
     line-height: 24px;
@@ -335,12 +331,14 @@ main {
     align-items: center;
     justify-content: flex-start;
 
+    color: #2B2B2B;
     font-weight: 700;
     font-size: 20px;
     line-height: 27px;
 }
 
 .section-trhid {
+    background-color: #F8F8F8;
     width: 100%;
     min-height: 575px;
     display: flex;
@@ -356,23 +354,37 @@ main {
     justify-content: space-between;
 }
 
-.curse-name__list {
+.curse-name__list-block {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+    background-color: #FFFFFF;
+    min-width: 80%;
+    padding-right: 25px;
 }
 .change-curse__menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
     color: #2B2B2B;
+    min-width: 20%;
     text-decoration: none;
     list-style: none;
     text-decoration: none;
     line-height: 48px;
 }
 
-.change-curse__menu li a:focus {
+.change-curse__menu_item {
+    color: #2B2B2B;
+    text-decoration: none;
     font-weight: 700;
-    outline: none;   
+    width: 100%;
+}
+.change-curse__menu_item:focus {
+    background-color: #FFFFFF;  
 }
 
 .curse-name__list_column {
@@ -381,11 +393,18 @@ main {
     justify-content: flex-start;
     list-style: none;
 
+    padding-left: 30px;
+    min-width: 33%;
 }
 
 .change-curse li {
     color: #2B2B2B;
     text-decoration: none;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .section-fourth {
@@ -596,6 +615,8 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    min-height: 550px;
 }
 
 .section-blog__blog-list {
@@ -673,6 +694,7 @@ footer {
     font-size: 12px;
     line-height: 16px;
     color: #B5B5B5;
+    width: 100%;
 }
 
 .footer__menu {
