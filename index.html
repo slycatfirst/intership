@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="device-width, initial-scale=1">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
 </head>
 <body>
 <!-- TODO неправильное определение того что входит в header, header обычно отображается на всех страницах,
@@ -382,8 +383,27 @@
         </section>
         <section class="section-fourth container_width">
             <h2 class="section-title">Школы</h2>
-            <ul class="school-list">
-                <li class="school-list__item">
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                  <!-- Slides -->
+                  <div class="swiper-slide">
+                    <img src="img/netology-logo.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="img/skillfactory.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="img/otus.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="img/geekbrains.png" alt="">
+                  </div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev">
                     <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="44" height="44" rx="22" fill="#01E45C"/>
                         <g clip-path="url(#clip0_124_135)">
@@ -394,21 +414,9 @@
                         <rect width="14" height="14" fill="white" transform="translate(28 15) rotate(90)"/>
                         </clipPath>
                         </defs>
-                        </svg>                        
-                </li>
-                <li class="school-list__item">
-                        
-                </li>
-                <li class="school-list__item">
-                                      
-                </li>
-                <li class="school-list__item">
-                                      
-                </li>
-                <li class="school-list__item">
-                  
-                </li>
-                <li class="school-list__item">
+                    </svg>  
+                </div>
+                <div class="swiper-button-next">
                     <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="44" height="44" rx="22" transform="matrix(-1 0 0 1 44 0)" fill="#01E45C"/>
                         <g clip-path="url(#clip0_124_136)">
@@ -419,9 +427,13 @@
                         <rect width="14" height="14" fill="white" transform="matrix(4.37114e-08 1 1 -4.37114e-08 16 15)"/>
                         </clipPath>
                         </defs>
-                        </svg>                        
-                </li>
-            </ul>
+                    </svg>  
+                </div>
+                <!-- If we need scrollbar -->
+                <div class="swiper-scrollbar"></div>
+              </div>
+            <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+            <script src="swiper/slider.js"></script>
         </section>
         <section class="popular-curse container_padding">
             <h2 class="section-title">Популярные онлайн-курсы</h2>
